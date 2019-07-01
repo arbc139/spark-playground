@@ -22,10 +22,12 @@
     <scala.compat.version>2.11</scala.compat.version>
     <spec2.version>4.2.0</spec2.version>
     <spark.version>2.4.3</spark.version>
+    <spark.kafka.version>2.4.3</spark.kafka.version>
     <spark.compat.version>2.11</spark.compat.version>
   </properties>
 
   <dependencies>
+    <!-- Spark -->
     <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-library</artifactId>
@@ -42,6 +44,30 @@
       <artifactId>spark-sql_${spark.compat.version}</artifactId>
       <version>${spark.version}</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-streaming_${spark.compat.version}</artifactId>
+      <version>${spark.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-streaming-kafka-0-10_${spark.compat.version}</artifactId>
+      <version>${spark.kafka.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-mllib_${spark.compat.version}</artifactId>
+      <version>${spark.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Twitter -->
+    <dependency>
+      <groupId>com.twitter.penguin</groupId>
+      <artifactId>korean-text</artifactId>
+      <version>4.0</version>
     </dependency>
 
     <!-- Test -->

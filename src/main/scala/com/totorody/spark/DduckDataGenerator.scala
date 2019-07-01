@@ -8,7 +8,7 @@ import org.joda.time.format.DateTimeFormat
 
 import scala.util.Random
 
-object TestGenerator {
+object DduckDataGenerator {
   val timeFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")
 
   def main(args: Array[String]): Unit = {
@@ -16,8 +16,7 @@ object TestGenerator {
     val octoberFilePath = args(0)
     val novemberFilePath = args(1)
 
-    val conf = new SparkConf()
-      .setAppName("TestGenerator")
+    val conf = new SparkConf().setAppName("DduckDataGenerator")
     val sc = new SparkContext(conf)
     val spark = SparkSession.builder.config(conf).getOrCreate()
 
@@ -42,7 +41,7 @@ object TestGenerator {
             Row(
               id,
               timeFormat.print(start.plusSeconds(id)),
-              randomProvider.nextInt(19) + 1,
+              randomProvider.nextInt(20),
               randomProvider.nextInt(100)
             )
           }
@@ -58,16 +57,10 @@ object TestGenerator {
       val novemberEntries = novemberIds
         .map(
           id => {
-            //            val randomProvider = new Random(id)
-//            val timeFormat = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")
-//            val start = DateTime.parse(
-//              "2019-11-01 00:00:00",
-//              timeFormat
-//            )
             Row(
               id,
               timeFormat.print(start.plusSeconds(id)),
-              randomProvider.nextInt(19) + 1,
+              randomProvider.nextInt(20),
               randomProvider.nextInt(100)
             )
           }
